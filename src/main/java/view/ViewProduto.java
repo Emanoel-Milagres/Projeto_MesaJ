@@ -4,7 +4,7 @@
  */
 package view;
 
-import controler.ControllerProdutos;
+import controller.ControllerProdutos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.ModelProdutos;
+import util.Formatador;
 
 /**
  *
@@ -23,6 +24,7 @@ public class ViewProduto extends javax.swing.JFrame {
     ControllerProdutos controllerProduto = new ControllerProdutos();
     ModelProdutos modelProduto = new ModelProdutos();
     String salvarAlterar;
+    Formatador formatador = new Formatador();
 
     /**
      * Creates new form ViewProduto
@@ -378,7 +380,7 @@ public class ViewProduto extends javax.swing.JFrame {
     private void salvarProduto() {
         modelProduto.setProNome(this.jtfNome.getText());
         modelProduto.setProQuantidade(Integer.parseInt(this.jtfQuantidade.getText()));
-        modelProduto.setProValor(Double.parseDouble(this.jtfValor.getText()));
+        modelProduto.setProValor(formatador.converterVP(this.jtfValor.getText()));
         if (controllerProduto.salvarProdutoController(modelProduto) > 0) {
             JOptionPane.showMessageDialog(this, "Produto cadastrado com sucesso!", "SUCESSO!", JOptionPane.WARNING_MESSAGE);
             this.carregarProdutos();
@@ -392,7 +394,7 @@ public class ViewProduto extends javax.swing.JFrame {
     private void alterarProduto() {
         modelProduto.setProNome(this.jtfNome.getText());
         modelProduto.setProQuantidade(Integer.parseInt(this.jtfQuantidade.getText()));
-        modelProduto.setProValor(Double.parseDouble(this.jtfValor.getText()));
+        modelProduto.setProValor(formatador.converterVP(this.jtfValor.getText()));
         if (controllerProduto.alterarProdutoController(modelProduto)) {
             JOptionPane.showMessageDialog(this, "Produto alterado com sucesso!", "SUCESSO!", JOptionPane.WARNING_MESSAGE);
             this.carregarProdutos();

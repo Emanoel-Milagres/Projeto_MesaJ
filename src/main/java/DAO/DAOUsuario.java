@@ -1,13 +1,13 @@
 package DAO;
 
 import model.ModelUsuario;
-import conexoes.ConexaoMySql;
+import conexoes.ConexaoPostgre;
 import java.util.ArrayList;
 /**
 *
 * @author Emanoel
 */
-public class DAOUsuario extends ConexaoMySql {
+public class DAOUsuario extends ConexaoPostgre {
 
     /**
     * grava Usuario
@@ -21,12 +21,13 @@ public class DAOUsuario extends ConexaoMySql {
                 "INSERT INTO tbl_usuario ("
                     + "usu_nome,"
                     + "usu_login,"
-                    + "usu_senha"
+                    + "usu_senha,"
+                    + "usu_setor"
                 + ") VALUES ("
-                    + "'" + pModelUsuario.getIdUsuario() + "',"
                     + "'" + pModelUsuario.getUsuNome() + "',"
                     + "'" + pModelUsuario.getUsuLogin() + "',"
-                    + "'" + pModelUsuario.getUsuSenha() + "'"
+                    + "'" + pModelUsuario.getUsuSenha() + "',"
+                    + "'" + pModelUsuario.getUsuSetor() + "'"
                 + ");"
             );
         }catch(Exception e){
@@ -39,23 +40,24 @@ public class DAOUsuario extends ConexaoMySql {
 
     /**
     * recupera Usuario
-    * @param pIdUsario
+    * @param pIdUsuario
     * @return ModelUsuario
     */
-    public ModelUsuario getUsuarioDAO(int pIdUsario){
+    public ModelUsuario getUsuarioDAO(int pIdUsuario){
         ModelUsuario modelUsuario = new ModelUsuario();
         try {
             this.conectar();
             this.executarSQL(
                 "SELECT "
-                    + "pk_id_usario,"
+                    + "pk_id_usuario,"
                     + "usu_nome,"
                     + "usu_login,"
-                    + "usu_senha"
+                    + "usu_senha,"
+                    + "usu_setor"
                  + " FROM"
                      + " tbl_usuario"
                  + " WHERE"
-                     + " pk_id_usario = '" + pIdUsario + "'"
+                     + " pk_id_usuario = '" + pIdUsuario + "'"
                 + ";"
             );
 
@@ -64,6 +66,7 @@ public class DAOUsuario extends ConexaoMySql {
                 modelUsuario.setUsuNome(this.getResultSet().getString(2));
                 modelUsuario.setUsuLogin(this.getResultSet().getString(3));
                 modelUsuario.setUsuSenha(this.getResultSet().getString(4));
+                modelUsuario.setUsuSetor(this.getResultSet().getString(5));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -84,10 +87,11 @@ public class DAOUsuario extends ConexaoMySql {
             this.conectar();
             this.executarSQL(
                 "SELECT "
-                    + "pk_id_usario,"
+                    + "pk_id_usuario,"
                     + "usu_nome,"
                     + "usu_login,"
-                    + "usu_senha"
+                    + "usu_senha,"
+                    + "usu_setor"
                  + " FROM"
                      + " tbl_usuario"
                 + ";"
@@ -99,6 +103,7 @@ public class DAOUsuario extends ConexaoMySql {
                 modelUsuario.setUsuNome(this.getResultSet().getString(2));
                 modelUsuario.setUsuLogin(this.getResultSet().getString(3));
                 modelUsuario.setUsuSenha(this.getResultSet().getString(4));
+                modelUsuario.setUsuSetor(this.getResultSet().getString(5));
                 listamodelUsuario.add(modelUsuario);
             }
         }catch(Exception e){
@@ -119,12 +124,13 @@ public class DAOUsuario extends ConexaoMySql {
             this.conectar();
             return this.executarUpdateDeleteSQL(
                 "UPDATE tbl_usuario SET "
-                    + "pk_id_usario = '" + pModelUsuario.getIdUsuario() + "',"
+                    + "pk_id_usuario = '" + pModelUsuario.getIdUsuario() + "',"
                     + "usu_nome = '" + pModelUsuario.getUsuNome() + "',"
                     + "usu_login = '" + pModelUsuario.getUsuLogin() + "',"
-                    + "usu_senha = '" + pModelUsuario.getUsuSenha() + "'"
+                    + "usu_senha = '" + pModelUsuario.getUsuSenha() + "',"
+                    + "usu_setor = '" + pModelUsuario.getUsuSetor() + "'"
                 + " WHERE "
-                    + "pk_id_usario = '" + pModelUsuario.getIdUsuario() + "'"
+                    + "pk_id_usuario = '" + pModelUsuario.getIdUsuario() + "'"
                 + ";"
             );
         }catch(Exception e){
@@ -137,7 +143,7 @@ public class DAOUsuario extends ConexaoMySql {
 
     /**
     * exclui Usuario
-    * @param pIdUsario
+    * @param pIdUsuario
     * @return boolean
     */
     public boolean excluirUsuarioDAO(int pIdUsuario){
@@ -146,9 +152,39 @@ public class DAOUsuario extends ConexaoMySql {
             return this.executarUpdateDeleteSQL(
                 "DELETE FROM tbl_usuario "
                 + " WHERE "
-                    + "pk_id_usario = '" + pIdUsuario + "'"
+                    + "pk_id_usuario = '" + pIdUsuario + "'"
                 + ";"
             );
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }finally{
+            this.fecharConexao();
+        }
+    }
+
+    public boolean getValidarUsuarioDAO(ModelUsuario pModelUsuario) {
+        ModelUsuario modelUsuario = new ModelUsuario();
+        try {
+            this.conectar();
+            this.executarSQL(
+                "SELECT "
+                    + "pk_id_usuario,"
+                    + "usu_nome,"
+                    + "usu_login,"
+                    + "usu_senha,"
+                    + "usu_setor"
+                 + " FROM"
+                     + " tbl_usuario"
+                 + " WHERE"
+                     + " usu_login = '" + pModelUsuario.getUsuLogin() + "'AND usu_senha'" + pModelUsuario.getUsuSenha() + "'"
+                + ";"
+            );
+            if(getResultSet().next()){
+                return true;
+            }else{
+                return false;
+            }
         }catch(Exception e){
             e.printStackTrace();
             return false;

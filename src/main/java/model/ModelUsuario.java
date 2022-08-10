@@ -9,6 +9,7 @@ public class ModelUsuario {
     private String usuNome;
     private String usuLogin;
     private String usuSenha;
+    private String usuSetor;
 
     /**
     * Construtor
@@ -71,8 +72,22 @@ public class ModelUsuario {
         return this.usuSenha;
     }
 
+    /**
+    * seta o valor de usuSetor
+    * @param pUsuSetor
+    */
+    public void setUsuSetor(String pUsuSetor){
+        this.usuSetor = pUsuSetor;
+    }
+    /**
+    * @return usuSetor
+    */
+    public String getUsuSetor(){
+        return this.usuSetor;
+    }
+
     @Override
     public String toString(){
-        return "ModelUsuario {" + "::idUsuario = " + this.idUsuario + "::usuNome = " + this.usuNome + "::usuLogin = " + this.usuLogin + "::usuSenha = " + this.usuSenha +  "}";
+        return "ModelUsuario {" + "::idUsuario = " + this.idUsuario + "::usuNome = " + this.usuNome + "::usuLogin = " + this.usuLogin + "::usuSenha = " + this.usuSenha + "::usuSetor = " + this.usuSetor +  "}";
     }
 }

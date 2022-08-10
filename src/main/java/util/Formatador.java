@@ -20,7 +20,7 @@ public class Formatador {
         int tamanhoString = pString.length();
         for(int i = 0; i<tamanhoString; i++){
             if(pString.charAt(i) == ','){
-                retorno += ',';
+                retorno += '.';
             }else{
                 retorno += pString.charAt(i);
             }

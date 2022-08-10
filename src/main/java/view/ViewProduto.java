@@ -164,7 +164,7 @@ public class ViewProduto extends javax.swing.JFrame {
 
         jtfQuantidade.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        jtfValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        jtfValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0.00"))));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -196,7 +196,7 @@ public class ViewProduto extends javax.swing.JFrame {
                                 .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel4)
-                                .addComponent(jtfValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jtfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(18, 18, 18)
                             .addComponent(jLabel5)
@@ -308,7 +308,7 @@ public class ViewProduto extends javax.swing.JFrame {
         try {
             int codigoProduto = (int) this.jtableProdutos.getValueAt(linha, 0);
             //recupara os dados do banco
-            modelProduto = controllerProduto.retornarProdutoController(codigoProduto);
+            modelProduto = controllerProduto.getProdutoController(codigoProduto);
             //mostrar na interface
             this.jtfCodigo.setText(String.valueOf(modelProduto.getIdProduto()));
             this.jtfNome.setText(modelProduto.getProNome());
@@ -395,7 +395,7 @@ public class ViewProduto extends javax.swing.JFrame {
         modelProduto.setProNome(this.jtfNome.getText());
         modelProduto.setProQuantidade(Integer.parseInt(this.jtfQuantidade.getText()));
         modelProduto.setProValor(formatador.converterVP(this.jtfValor.getText()));
-        if (controllerProduto.alterarProdutoController(modelProduto)) {
+        if (controllerProduto.atualizarProdutoController(modelProduto)) {
             JOptionPane.showMessageDialog(this, "Produto alterado com sucesso!", "SUCESSO!", JOptionPane.WARNING_MESSAGE);
             this.carregarProdutos();
             this.limparCampos();
@@ -418,7 +418,7 @@ public class ViewProduto extends javax.swing.JFrame {
      * preenche tabela de produtos
      */
     private void carregarProdutos() {
-        listaModelProduto = controllerProduto.retornarListaProdutoController();
+        listaModelProduto = controllerProduto.getListaProdutoController();
         DefaultTableModel modelo = (DefaultTableModel) jtableProdutos.getModel();
         modelo.setNumRows(0);
 

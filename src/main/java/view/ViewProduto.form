@@ -68,7 +68,7 @@
                                   <Component id="jtfNome" min="-2" pref="325" max="-2" attributes="0"/>
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jtfValor" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jtfValor" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -278,7 +278,7 @@
         <Component class="javax.swing.JFormattedTextField" name="jtfValor">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="0" type="4"/>
+              <Format format="0.00" subtype="-1" type="4"/>
             </Property>
           </Properties>
         </Component>

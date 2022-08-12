@@ -29,6 +29,14 @@ public class ControllerProdutos {
     public ModelProdutos getProdutoController(int pIdProduto){
         return this.daoProduto.getProdutosDAO(pIdProduto);
     }
+    /**
+    * recupera Produto
+    * @param pNomeProduto
+    * @return ModelProduto
+    */
+    public ModelProdutos getProdutoController(String pNomeProduto){
+        return this.daoProduto.getProdutosDAO(pNomeProduto);
+    }
 
     /**
     * recupera uma lista deProduto
@@ -55,5 +63,9 @@ public class ControllerProdutos {
     */
     public boolean excluirProdutoController(int pIdProduto){
         return this.daoProduto.excluirProdutoDAO(pIdProduto);
+    }
+
+    public boolean atualizarQuantidadeProdutoController(ArrayList<ModelProdutos> pListaModelProdutos) {
+        return this.daoProduto.atualizarQuantidadeProdutoDAO(pListaModelProdutos);
     }
 }

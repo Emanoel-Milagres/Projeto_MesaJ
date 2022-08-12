@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import controller.ControllerProdutos;
@@ -16,7 +12,7 @@ import util.Formatador;
 
 /**
  *
- * @author emano
+ * @author Emanoel
  */
 public class ViewProduto extends javax.swing.JFrame {
 
@@ -291,6 +287,7 @@ public class ViewProduto extends javax.swing.JFrame {
 
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
         // TODO add your handling code here:
+        limparCampos();
         this.habilitarDesabilitarCampos(true);
         salvarAlterar = "salvar";
     }//GEN-LAST:event_jbNovoActionPerformed

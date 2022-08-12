@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import controller.ControllerUsuario;
+import javax.swing.JOptionPane;
 import model.ModelUsuario;
 
 /**
  *
- * @author emano
+ * @author Emanoel
  */
 public class ViewLogin extends javax.swing.JFrame {
     
@@ -163,7 +160,12 @@ public class ViewLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         modelUsuario.setUsuLogin(jtfUsuario.getText());
         modelUsuario.setUsuSenha(String.valueOf(jpfSenha.getPassword()));
-        controllerUsuario.getValidarUsuarioController(modelUsuario);
+        if(controllerUsuario.getValidarUsuarioController(modelUsuario)){
+            
+        new ViewPrincipal().setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "Usuario ou Senha inválido!", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jbEntrarActionPerformed
 
     private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed

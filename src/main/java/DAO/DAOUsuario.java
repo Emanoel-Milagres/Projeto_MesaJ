@@ -164,7 +164,6 @@ public class DAOUsuario extends ConexaoPostgre {
     }
 
     public boolean getValidarUsuarioDAO(ModelUsuario pModelUsuario) {
-        ModelUsuario modelUsuario = new ModelUsuario();
         try {
             this.conectar();
             this.executarSQL(
@@ -177,7 +176,7 @@ public class DAOUsuario extends ConexaoPostgre {
                  + " FROM"
                      + " tbl_usuario"
                  + " WHERE"
-                     + " usu_login = '" + pModelUsuario.getUsuLogin() + "'AND usu_senha'" + pModelUsuario.getUsuSenha() + "'"
+                     + " usu_login = '" + pModelUsuario.getUsuLogin() + "' AND usu_senha = '" + pModelUsuario.getUsuSenha() + "'"
                 + ";"
             );
             if(getResultSet().next()){

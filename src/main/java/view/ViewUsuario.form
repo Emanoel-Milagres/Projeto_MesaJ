@@ -181,7 +181,7 @@
             <Component class="javax.swing.JTable" name="jtUsuarios">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
+                  <Table columnCount="4" rowCount="0">
                     <Column editable="false" title="C&#xf3;digo" type="java.lang.Integer"/>
                     <Column editable="false" title="Nome" type="java.lang.String"/>
                     <Column editable="false" title="Login" type="java.lang.String"/>
@@ -223,6 +223,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCancelarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbExcluir">
           <Properties>
@@ -269,10 +272,11 @@
         <Component class="javax.swing.JComboBox" name="jcbSetor">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Atendente"/>
-                <StringItem index="1" value="Caixa"/>
-                <StringItem index="2" value="Gerente"/>
+              <StringArray count="4">
+                <StringItem index="0" value=""/>
+                <StringItem index="1" value="Atendente"/>
+                <StringItem index="2" value="Caixa"/>
+                <StringItem index="3" value="Gerente"/>
               </StringArray>
             </Property>
           </Properties>

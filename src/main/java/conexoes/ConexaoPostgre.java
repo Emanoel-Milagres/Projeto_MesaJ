@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Br
+ * @author Emanoel
  */
 public class ConexaoPostgre {
 

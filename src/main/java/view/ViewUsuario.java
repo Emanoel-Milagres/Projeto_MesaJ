@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import controller.ControllerUsuario;
@@ -26,6 +22,7 @@ public class ViewUsuario extends javax.swing.JFrame {
      */
     public ViewUsuario() {
         initComponents();
+        carregarUsuarios();
         setLocationRelativeTo(null);
         habilitarDesabilitarCampos(false);
     }
@@ -80,10 +77,7 @@ public class ViewUsuario extends javax.swing.JFrame {
 
         jtUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nome", "Login", "Setor"
@@ -111,6 +105,11 @@ public class ViewUsuario extends javax.swing.JFrame {
         }
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         jbExcluir.setText("Excluir");
         jbExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +147,7 @@ public class ViewUsuario extends javax.swing.JFrame {
 
         jLabel5.setText("Setor:");
 
-        jcbSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Atendente", "Caixa", "Gerente" }));
+        jcbSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Atendente", "Caixa", "Gerente" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -299,29 +298,40 @@ public class ViewUsuario extends javax.swing.JFrame {
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
         // TODO add your handling code here:
         int linha = jtUsuarios.getSelectedRow();
+        alterarSalvar = "alterar";
         int codigo = (int) jtUsuarios.getValueAt(linha, 0);
-
+        try{
         modelUsuario = controllerUsuario.getUsuarioController(codigo);
         jtfCodigo.setText(String.valueOf(modelUsuario.getIdUsuario()));
         jtfNome.setText(String.valueOf(modelUsuario.getUsuNome()));
         jtfLogin.setText(String.valueOf(modelUsuario.getUsuLogin()));
         jtfSenha.setText(String.valueOf(modelUsuario.getUsuSenha()));
-
-        alterarSalvar = "alterar";
         habilitarDesabilitarCampos(true);
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Código inválido ou nenhum registro selecionado", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jbAlterarActionPerformed
 
     private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
         // TODO add your handling code here:
         limparCampos();
         alterarSalvar = "salvar";
-        habilitarDesabilitarCampos(true);
+        this.habilitarDesabilitarCampos(true);
 
     }//GEN-LAST:event_jbNovoActionPerformed
 
     private void jtfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfSenhaActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        // TODO add your handling code here:
+        this.habilitarDesabilitarCampos(false);
+        this.limparCampos();
+        
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,7 +378,9 @@ public class ViewUsuario extends javax.swing.JFrame {
             modelo.addRow(new Object[]{
                 listaModelUsuarios.get(i).getIdUsuario(),
                 listaModelUsuarios.get(i).getUsuNome(),
-                listaModelUsuarios.get(i).getUsuLogin()
+                listaModelUsuarios.get(i).getUsuLogin(),
+                listaModelUsuarios.get(i).getUsuSetor()
+                    
             });
         }
     }
@@ -378,14 +390,15 @@ public class ViewUsuario extends javax.swing.JFrame {
         jtfNome.setText("");
         jtfLogin.setText("");
         jtfSenha.setText("");
+        jcbSetor.setSelectedIndex(0);
     }
 
     private void habilitarDesabilitarCampos(boolean condicao) {
-        jtfCodigo.setEnabled(condicao);
         jtfNome.setEnabled(condicao);
         jtfLogin.setEnabled(condicao);
         jtfSenha.setEnabled(condicao);
         jbSalvar.setEnabled(condicao);
+        jcbSetor.setEnabled(condicao);
     }
 
 

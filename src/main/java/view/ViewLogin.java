@@ -59,6 +59,14 @@ public class ViewLogin extends javax.swing.JFrame {
                 jbEntrarActionPerformed(evt);
             }
         });
+        jbEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jbEntrarKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jbEntrarKeyTyped(evt);
+            }
+        });
 
         jpfSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +180,14 @@ public class ViewLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jbSairActionPerformed
+
+    private void jbEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbEntrarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbEntrarKeyPressed
+
+    private void jbEntrarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbEntrarKeyTyped
+        // TODO add your handling code here:0
+    }//GEN-LAST:event_jbEntrarKeyTyped
 
     /**
      * @param args the command line arguments

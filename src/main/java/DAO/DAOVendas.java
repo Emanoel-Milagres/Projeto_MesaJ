@@ -24,7 +24,6 @@ public class DAOVendas extends ConexaoPostgre {
                     + "ven_data_venda,"
                     + "ven_valor_liquido,"
                     + "ven_valor_bruto,"
-                    + "ven_desconto,"
                     + "ven_taxa"
                 + ") VALUES ("
                     + "'" + pModelVendas.getUsuario() + "',"
@@ -32,7 +31,6 @@ public class DAOVendas extends ConexaoPostgre {
                     + "'" + pModelVendas.getVenDataVenda() + "',"
                     + "'" + pModelVendas.getVenValorLiquido() + "',"
                     + "'" + pModelVendas.getVenValorBruto() + "',"
-                    + "'" + pModelVendas.getVenDesconto() + "',"
                     + "'" + pModelVendas.getVenTaxa() + "'"
                 + ");"
             );
@@ -61,7 +59,6 @@ public class DAOVendas extends ConexaoPostgre {
                     + "ven_data_venda,"
                     + "ven_valor_liquido,"
                     + "ven_valor_bruto,"
-                    + "ven_desconto,"
                     + "ven_taxa"
                  + " FROM"
                      + " tbl_vendas"
@@ -77,7 +74,6 @@ public class DAOVendas extends ConexaoPostgre {
                 modelVendas.setVenDataVenda(this.getResultSet().getDate(4));
                 modelVendas.setVenValorLiquido(this.getResultSet().getDouble(5));
                 modelVendas.setVenValorBruto(this.getResultSet().getDouble(6));
-                modelVendas.setVenDesconto(this.getResultSet().getDouble(7));
                 modelVendas.setVenTaxa(this.getResultSet().getDouble(8));
             }
         }catch(Exception e){
@@ -105,7 +101,6 @@ public class DAOVendas extends ConexaoPostgre {
                     + "ven_data_venda,"
                     + "ven_valor_liquido,"
                     + "ven_valor_bruto,"
-                    + "ven_desconto,"
                     + "ven_taxa"
                  + " FROM"
                      + " tbl_vendas"
@@ -120,7 +115,6 @@ public class DAOVendas extends ConexaoPostgre {
                 modelVendas.setVenDataVenda(this.getResultSet().getDate(4));
                 modelVendas.setVenValorLiquido(this.getResultSet().getDouble(5));
                 modelVendas.setVenValorBruto(this.getResultSet().getDouble(6));
-                modelVendas.setVenDesconto(this.getResultSet().getDouble(7));
                 modelVendas.setVenTaxa(this.getResultSet().getDouble(8));
                 listamodelVendas.add(modelVendas);
             }
@@ -148,7 +142,6 @@ public class DAOVendas extends ConexaoPostgre {
                     + "ven_data_venda = '" + pModelVendas.getVenDataVenda() + "',"
                     + "ven_valor_liquido = '" + pModelVendas.getVenValorLiquido() + "',"
                     + "ven_valor_bruto = '" + pModelVendas.getVenValorBruto() + "',"
-                    + "ven_desconto = '" + pModelVendas.getVenDesconto() + "',"
                     + "ven_taxa = '" + pModelVendas.getVenTaxa() + "'"
                 + " WHERE "
                     + "pk_id_venda = '" + pModelVendas.getIdVenda() + "'"

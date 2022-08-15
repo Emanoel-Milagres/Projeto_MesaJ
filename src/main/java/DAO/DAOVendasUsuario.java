@@ -25,44 +25,49 @@ public class DAOVendasUsuario extends ConexaoPostgre{
             this.conectar();
             this.executarSQL(
                 "SELECT "
-                    + "tbl_vendas.pk_id_venda,"
-                    + "tbl_vendas.fk_usuario,"
-                    + "tbl_vendas.ven_mesa,"
-                    + "tbl_vendas.ven_data_venda,"
-                    + "tbl_vendas.ven_valor_liquido,"
-                    + "tbl_vendas.ven_valor_bruto,"
-                    + "tbl_vendas.ven_desconto,"
+                    + "tbl_venda.pk_id_venda,"
+                    + "tbl_venda.fk_usuario,"
+                    + "tbl_venda.ven_mesa,"
+                    + "tbl_venda.ven_data_venda,"
+                    + "tbl_venda.ven_valor_liquido,"
+                    + "tbl_venda.ven_valor_bruto,"
+                    + "tbl_venda.ven_taxa,"
                     + "tbl_usuario.pk_id_usuario,"
-                    + "tbl_vendas.usu_nome,"
-                    + "tbl_vendas.ven_setor"
+                    + "tbl_usuario.usu_nome,"
+                    + "tbl_usuario.usu_login,"
+                    + "tbl_usuario.usu_senha,"
+                    + "tbl_usuario.usu_setor"
                  + " FROM"
-                     + " tbl_vendas INNER JOIN tbl_usuario"
-                        +"ON tbl_usuario.pk_id_usuario = tbl_vendas.fk_usuario"
+                     + " tbl_venda INNER JOIN tbl_usuario "
+                        +"ON tbl_usuario.pk_id_usuario = tbl_venda.fk_usuario;"
                 + ";"
             );
 
             while(this.getResultSet().next()){
                 modelVendas = new ModelVendas();
                 modelUsuario = new ModelUsuario();
+                modelVendasUsuario = new ModelVendasUsuario();
                     
+                modelVendas = new ModelVendas();
                 modelVendas.setIdVenda(this.getResultSet().getInt(1));
                 modelVendas.setUsuario(this.getResultSet().getInt(2));
-                modelVendas.setVenMesa(String.valueOf(this.getResultSet().getInt(3)));
+                modelVendas.setVenMesa(this.getResultSet().getString(3));
                 modelVendas.setVenDataVenda(this.getResultSet().getDate(4));
                 modelVendas.setVenValorLiquido(this.getResultSet().getDouble(5));
                 modelVendas.setVenValorBruto(this.getResultSet().getDouble(6));
-                modelVendas.setVenDesconto(this.getResultSet().getDouble(7));
-                modelVendas.setVenTaxa(this.getResultSet().getDouble(8));
+                modelVendas.setVenTaxa(this.getResultSet().getDouble(7));
                 
-                modelUsuario.setIdUsuario(this.getResultSet().getInt(1));
-                modelUsuario.setUsuNome(this.getResultSet().getString(2));
-                modelUsuario.setUsuSetor(this.getResultSet().getString(5));
+                modelUsuario.setIdUsuario(this.getResultSet().getInt(8));
+                modelUsuario.setUsuNome(this.getResultSet().getString(9));
+                modelUsuario.setUsuLogin(this.getResultSet().getString(10));
+                modelUsuario.setUsuSenha(this.getResultSet().getString(11));
+                modelUsuario.setUsuSetor(this.getResultSet().getString(12));
                 
                 modelVendasUsuario.setModelVendas(modelVendas);
                 modelVendasUsuario.setModelUsuario(modelUsuario);
                 
                 listaModelVendasUsuario.add(modelVendasUsuario);
-                
+                 
             }
         }catch(Exception e){
             e.printStackTrace();

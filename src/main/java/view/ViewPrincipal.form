@@ -2,11 +2,13 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
+    <Component class="javax.swing.JOptionPane" name="jOptionPane1">
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jmSair">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Arquivos"/>
+            <Property name="text" type="java.lang.String" value="Configura&#xe7;&#xf5;es"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
@@ -99,6 +101,11 @@
   </Layout>
   <SubComponents>
     <Container class="componentes.UJPanelImagem" name="uJPanelImagem1">
+      <Properties>
+        <Property name="imagem" type="java.io.File" editor="org.netbeans.beaninfo.editors.FileEditor">
+          <SerializedValue value="-84,-19,0,5,115,114,0,12,106,97,118,97,46,105,111,46,70,105,108,101,4,45,-92,69,14,13,-28,-1,3,0,1,76,0,4,112,97,116,104,116,0,18,76,106,97,118,97,47,108,97,110,103,47,83,116,114,105,110,103,59,120,112,116,0,94,67,58,92,85,115,101,114,115,92,101,109,97,110,111,92,79,110,101,68,114,105,118,101,92,68,111,99,117,109,101,110,116,111,115,92,78,101,116,66,101,97,110,115,80,114,111,106,101,99,116,115,92,77,101,115,97,74,92,115,114,99,92,109,97,105,110,92,106,97,118,97,92,105,109,97,103,101,110,115,92,116,101,115,116,101,102,111,116,111,46,106,112,101,103,119,2,0,92,120"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">

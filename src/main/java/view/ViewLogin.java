@@ -1,6 +1,7 @@
 package view;
 
 import controller.ControllerUsuario;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import model.ModelUsuario;
 
@@ -9,7 +10,7 @@ import model.ModelUsuario;
  * @author Emanoel
  */
 public class ViewLogin extends javax.swing.JFrame {
-    
+
     ControllerUsuario controllerUsuario = new ControllerUsuario();
     ModelUsuario modelUsuario = new ModelUsuario();
 
@@ -62,6 +63,9 @@ public class ViewLogin extends javax.swing.JFrame {
         jbEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jbEntrarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jbEntrarKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jbEntrarKeyTyped(evt);
@@ -168,10 +172,10 @@ public class ViewLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         modelUsuario.setUsuLogin(jtfUsuario.getText());
         modelUsuario.setUsuSenha(String.valueOf(jpfSenha.getPassword()));
-        if(controllerUsuario.getValidarUsuarioController(modelUsuario)){
-            
-        new ViewPrincipal().setVisible(true);
-        }else{
+        if (controllerUsuario.getValidarUsuarioController(modelUsuario)) {
+
+            new ViewPrincipal().setVisible(true);
+        } else {
             JOptionPane.showMessageDialog(this, "Usuario ou Senha inválido!", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbEntrarActionPerformed
@@ -182,12 +186,17 @@ public class ViewLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jbSairActionPerformed
 
     private void jbEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbEntrarKeyPressed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
     }//GEN-LAST:event_jbEntrarKeyPressed
 
     private void jbEntrarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbEntrarKeyTyped
-        // TODO add your handling code here:0
+        // TODO add your handling code here:0        
+
     }//GEN-LAST:event_jbEntrarKeyTyped
+
+    private void jbEntrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbEntrarKeyReleased
+        // TODO add your handling code here:        }
+    }//GEN-LAST:event_jbEntrarKeyReleased
 
     /**
      * @param args the command line arguments

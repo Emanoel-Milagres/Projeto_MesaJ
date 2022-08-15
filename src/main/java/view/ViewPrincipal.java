@@ -12,8 +12,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
      * Creates new form ViewPrincipal
      */
     public ViewPrincipal() {
-        setExtendedState(JFrame.MAXIMIZED_BOTH);    
         initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);    
     }
 
     /**
@@ -25,6 +25,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jOptionPane1 = new javax.swing.JOptionPane();
         uJPanelImagem1 = new componentes.UJPanelImagem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmSair = new javax.swing.JMenu();
@@ -39,6 +40,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
         setTitle("MESA J");
         setResizable(false);
 
+        uJPanelImagem1.setImagem(new java.io.File("C:\\Users\\emano\\OneDrive\\Documentos\\NetBeansProjects\\MesaJ\\src\\main\\java\\imagens\\testefoto.jpeg"));
+
         javax.swing.GroupLayout uJPanelImagem1Layout = new javax.swing.GroupLayout(uJPanelImagem1);
         uJPanelImagem1.setLayout(uJPanelImagem1Layout);
         uJPanelImagem1Layout.setHorizontalGroup(
@@ -50,7 +53,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
             .addGap(0, 477, Short.MAX_VALUE)
         );
 
-        jmSair.setText("Arquivos");
+        jmSair.setText("Configurações");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem1.setText("Sair");
@@ -173,6 +176,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JMenu jmEstoque;
     private javax.swing.JMenu jmSair;
     private javax.swing.JMenuItem jmUsuario;

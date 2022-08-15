@@ -18,7 +18,7 @@ public class DAOVendas extends ConexaoPostgre {
         try {
             this.conectar();
             return this.insertSQL(
-                "INSERT INTO tbl_vendas ("
+                "INSERT INTO tbl_venda ("
                     + "fk_usuario,"
                     + "ven_mesa,"
                     + "ven_data_venda,"
@@ -61,7 +61,7 @@ public class DAOVendas extends ConexaoPostgre {
                     + "ven_valor_bruto,"
                     + "ven_taxa"
                  + " FROM"
-                     + " tbl_vendas"
+                     + " tbl_venda"
                  + " WHERE"
                      + " pk_id_venda = '" + pIdVenda + "'"
                 + ";"
@@ -103,7 +103,7 @@ public class DAOVendas extends ConexaoPostgre {
                     + "ven_valor_bruto,"
                     + "ven_taxa"
                  + " FROM"
-                     + " tbl_vendas"
+                     + " tbl_venda"
                 + ";"
             );
 
@@ -115,7 +115,7 @@ public class DAOVendas extends ConexaoPostgre {
                 modelVendas.setVenDataVenda(this.getResultSet().getDate(4));
                 modelVendas.setVenValorLiquido(this.getResultSet().getDouble(5));
                 modelVendas.setVenValorBruto(this.getResultSet().getDouble(6));
-                modelVendas.setVenTaxa(this.getResultSet().getDouble(8));
+                modelVendas.setVenTaxa(this.getResultSet().getDouble(7));
                 listamodelVendas.add(modelVendas);
             }
         }catch(Exception e){
@@ -135,7 +135,7 @@ public class DAOVendas extends ConexaoPostgre {
         try {
             this.conectar();
             return this.executarUpdateDeleteSQL(
-                "UPDATE tbl_vendas SET "
+                "UPDATE tbl_venda SET "
                     + "pk_id_venda = '" + pModelVendas.getIdVenda() + "',"
                     + "fk_usuario = '" + pModelVendas.getUsuario() + "',"
                     + "ven_mesa = '" + pModelVendas.getVenMesa() + "',"
@@ -164,7 +164,7 @@ public class DAOVendas extends ConexaoPostgre {
         try {
             this.conectar();
             return this.executarUpdateDeleteSQL(
-                "DELETE FROM tbl_vendas "
+                "DELETE FROM tbl_venda "
                 + " WHERE "
                     + "pk_id_venda = '" + pIdVenda + "'"
                 + ";"

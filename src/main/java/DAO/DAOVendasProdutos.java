@@ -21,15 +21,15 @@ public class DAOVendasProdutos extends ConexaoPostgre {
             this.conectar();
             return this.insertSQL(
                     "INSERT INTO tbl_vendas_produtos ("
-                    + "fk_produto,"
-                    + "fk_vendas,"
-                    + "vend_pro_valor,"
-                    + "ven_pro_quantidade"
+                        + "fk_produto,"
+                        + "fk_vendas,"
+                        + "ven_pro_valor,"
+                        + "ven_pro_quantidade"
                     + ") VALUES ("
-                    + "'" + pModelVendasProdutos.getProduto() + "',"
-                    + "'" + pModelVendasProdutos.getVendas() + "',"
-                    + "'" + pModelVendasProdutos.getVenProValor() + "',"
-                    + "'" + pModelVendasProdutos.getVenProQuantidade() + "'"
+                        + "'" + pModelVendasProdutos.getProduto() + "',"
+                        + "'" + pModelVendasProdutos.getVendas() + "',"
+                        + "'" + pModelVendasProdutos.getVenProValor() + "',"
+                        + "'" + pModelVendasProdutos.getVenProQuantidade() + "'"
                     + ");"
             );
         } catch (Exception e) {
@@ -52,15 +52,15 @@ public class DAOVendasProdutos extends ConexaoPostgre {
             this.conectar();
             this.executarSQL(
                     "SELECT "
-                    + "pk_id_venda_produto,"
-                    + "fk_produto,"
-                    + "fk_vendas,"
-                    + "vend_pro_valor,"
-                    + "ven_pro_quantidade"
-                    + " FROM"
-                    + " tbl_vendas_produtos"
+                        + "pk_id_venda_produto,"
+                        + "fk_produto,"
+                        + "fk_vendas,"
+                        + "ven_pro_valor,"
+                        + "ven_pro_quantidade"
+                        + " FROM"
+                        + " tbl_vendas_produtos"
                     + " WHERE"
-                    + " pk_id_venda_produto = '" + pIdVendaProduto + "'"
+                        + " pk_id_venda_produto = '" + pIdVendaProduto + "'"
                     + ";"
             );
 
@@ -91,13 +91,13 @@ public class DAOVendasProdutos extends ConexaoPostgre {
             this.conectar();
             this.executarSQL(
                     "SELECT "
-                    + "pk_id_venda_produto,"
-                    + "fk_produto,"
-                    + "fk_vendas,"
-                    + "vend_pro_valor,"
-                    + "ven_pro_quantidade"
-                    + " FROM"
-                    + " tbl_vendas_produtos"
+                        + "pk_id_venda_produto,"
+                        + "fk_produto,"
+                        + "fk_vendas,"
+                        + "ven_pro_valor,"
+                        + "ven_pro_quantidade"
+                     + " FROM"
+                        + " tbl_vendas_produtos"
                     + ";"
             );
 
@@ -129,13 +129,13 @@ public class DAOVendasProdutos extends ConexaoPostgre {
             this.conectar();
             return this.executarUpdateDeleteSQL(
                     "UPDATE tbl_vendas_produtos SET "
-                    + "pk_id_venda_produto = '" + pModelVendasProdutos.getIdVendaProduto() + "',"
-                    + "fk_produto = '" + pModelVendasProdutos.getProduto() + "',"
-                    + "fk_vendas = '" + pModelVendasProdutos.getVendas() + "',"
-                    + "vend_pro_valor = '" + pModelVendasProdutos.getVenProValor() + "',"
-                    + "ven_pro_quantidade = '" + pModelVendasProdutos.getVenProQuantidade() + "'"
-                    + " WHERE "
-                    + "pk_id_venda_produto = '" + pModelVendasProdutos.getIdVendaProduto() + "'"
+                        + "pk_id_venda_produto = '" + pModelVendasProdutos.getIdVendaProduto() + "',"
+                        + "fk_produto = '" + pModelVendasProdutos.getProduto() + "',"
+                        + "fk_vendas = '" + pModelVendasProdutos.getVendas() + "',"
+                        + "ven_pro_valor = '" + pModelVendasProdutos.getVenProValor() + "',"
+                        + "ven_pro_quantidade = '" + pModelVendasProdutos.getVenProQuantidade() + "'"
+                     + " WHERE "
+                        + "pk_id_venda_produto = '" + pModelVendasProdutos.getIdVendaProduto() + "'"
                     + ";"
             );
         } catch (Exception e) {
@@ -158,7 +158,7 @@ public class DAOVendasProdutos extends ConexaoPostgre {
             return this.executarUpdateDeleteSQL(
                     "DELETE FROM tbl_vendas_produtos "
                     + " WHERE "
-                    + "pk_id_venda_produto = '" + pIdVendaProduto + "'"
+                    + "fk_vendas = '" + pIdVendaProduto + "'"
                     + ";"
             );
         } catch (Exception e) {
@@ -184,9 +184,9 @@ public class DAOVendasProdutos extends ConexaoPostgre {
                         "INSERT INTO tbl_vendas_produtos ("
                         + "fk_produto,"
                         + "fk_vendas,"
-                        + "vend_pro_valor,"
+                        + "ven_pro_valor,"
                         + "ven_pro_quantidade"
-                        + ") VALUES ("                        
+                        + ") VALUES ("
                         + "'" + pListaModelVendasProdutos.get(i).getProduto() + "',"
                         + "'" + pListaModelVendasProdutos.get(i).getVendas() + "',"
                         + "'" + pListaModelVendasProdutos.get(i).getVenProValor() + "',"

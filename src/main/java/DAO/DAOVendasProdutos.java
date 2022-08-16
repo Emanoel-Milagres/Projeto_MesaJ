@@ -179,7 +179,7 @@ public class DAOVendasProdutos extends ConexaoPostgre {
         try {
             this.conectar();
             int cont = pListaModelVendasProdutos.size();
-            for (int i = 0; 1 < cont; i++) {
+            for (int i = 0; i < cont; i++) {
                 this.insertSQL(
                         "INSERT INTO tbl_vendas_produtos ("
                         + "fk_produto,"

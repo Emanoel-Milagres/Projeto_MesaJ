@@ -7,7 +7,6 @@ import controller.ControllerVendas;
 import controller.ControllerVendasProdutos;
 import controller.ControllerVendasUsuario;
 import java.util.ArrayList;
-import java.util.HashSet;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -94,6 +93,8 @@ public class ViewVendas extends javax.swing.JFrame {
         jtfValorTotal = new javax.swing.JFormattedTextField();
         jtfValorBruto = new javax.swing.JFormattedTextField();
         jcbProduto = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        jtfCodUsu = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jbSalvar1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -230,6 +231,15 @@ public class ViewVendas extends javax.swing.JFrame {
 
         jcbUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jcbUsuario.setEnabled(false);
+        jcbUsuario.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jcbUsuarioPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
 
         jLabel14.setText("Valor Bruto:");
 
@@ -261,6 +271,27 @@ public class ViewVendas extends javax.swing.JFrame {
         jtfValorBruto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         jtfValorBruto.setEnabled(false);
 
+        jcbProduto.setEnabled(false);
+        jcbProduto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jcbProdutoFocusLost(evt);
+            }
+        });
+        jcbProduto.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jcbProdutoPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+
+        jLabel16.setText("Cod Usuario");
+
+        jtfCodUsu.setEditable(false);
+        jtfCodUsu.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -274,17 +305,26 @@ public class ViewVendas extends javax.swing.JFrame {
                             .addComponent(jtfCodPro, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jcbProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(79, 79, 79)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jtfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbAdicionar)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbRemover))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcbProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(jLabel6)))
+                                .addGap(79, 79, 79)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jtfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jbAdicionar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jbRemover))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jtfCodUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(406, 406, 406)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,7 +353,7 @@ public class ViewVendas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(jcbMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(149, 149, 149)
+                .addGap(142, 142, 142)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jcbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -330,12 +370,14 @@ public class ViewVendas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfNumVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfCodUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -632,10 +674,10 @@ public class ViewVendas extends javax.swing.JFrame {
     private void jtfCodProFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCodProFocusLost
         // TODO add your handling code here:
         if (jtfCodPro.getText().equals("")) {
-            
+
         } else {
             modelProdutos = controllerProdutos.getProdutoController(Integer.parseInt(jtfCodPro.getText()));
-            jcb.setSelectedItem(modelProdutos.getProNome());
+            jcbProduto.setSelectedItem(modelProdutos.getProNome());
         }
     }//GEN-LAST:event_jtfCodProFocusLost
 
@@ -674,9 +716,12 @@ public class ViewVendas extends javax.swing.JFrame {
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         // TODO add your handling code here:
-        int codigoVenda, codigoProduto;
-        double desconto, servico;
+        int codigoVenda = 0, codigoProduto;
+        double servico;
         listaModelVendasProdutos = new ArrayList<>();
+
+        modelVendas.setUsuario(Integer.parseInt(jtfCodUsu.getText()));
+
         if (jtfServico.getText().equals("")) {
             servico = 0;
 
@@ -694,7 +739,7 @@ public class ViewVendas extends javax.swing.JFrame {
         } catch (Exception ex) {
 
         }
-        //talvez precise arrumar aqui!!!!!
+
         modelVendas.setVenValorBruto(Double.parseDouble(jtfValorBruto.getText()));
         modelVendas.setVenValorLiquido(Double.parseDouble(jtfValorTotal.getText()));
         modelVendas.setVenTaxa(servico);
@@ -736,7 +781,7 @@ public class ViewVendas extends javax.swing.JFrame {
             }
         } else {
             //Inicio
-            //Retonrar para o estoque e excluir produtos da venda;
+            //Retornar para o estoque e excluir produtos da venda;
             int linha = jtVendas.getSelectedRow();
             codigoVenda = (int) jtVendas.getValueAt(linha, 0);
             listaModelProdutos = new ArrayList<>();
@@ -795,6 +840,7 @@ public class ViewVendas extends javax.swing.JFrame {
         }
 
         habilitarCampos(false);
+        limparFormulario();
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRemoverActionPerformed
@@ -824,6 +870,41 @@ public class ViewVendas extends javax.swing.JFrame {
         String texto = jtfPesquisa.getText();
         classificador.setRowFilter(RowFilter.regexFilter(texto, 1));
     }//GEN-LAST:event_jbPesquisarActionPerformed
+
+    private void jcbProdutoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcbProdutoFocusLost
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jcbProdutoFocusLost
+
+    private void jcbProdutoPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jcbProdutoPopupMenuWillBecomeInvisible
+        // TODO add your handling code here:
+        try {
+            if (jcbProduto.isPopupVisible()) {
+                modelProdutos = controllerProdutos.getProdutoController(jcbProduto.getSelectedItem().toString());
+                jtfCodPro.setText(String.valueOf(modelProdutos.getIdProduto()));
+
+            } else {
+
+            }
+        } catch (Exception e) {
+
+        }
+
+    }//GEN-LAST:event_jcbProdutoPopupMenuWillBecomeInvisible
+
+    private void jcbUsuarioPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jcbUsuarioPopupMenuWillBecomeInvisible
+        // TODO add your handling code here:
+        try {
+            if (jcbUsuario.isPopupVisible()) {
+                modelUsuario = controllerUsuario.getUsuarioController(jcbUsuario.getSelectedItem().toString());
+                jtfCodUsu.setText(String.valueOf(modelUsuario.getIdUsuario()));
+
+            } else {
+            }
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_jcbUsuarioPopupMenuWillBecomeInvisible
 
     /**
      * @param args the command line arguments
@@ -873,19 +954,20 @@ public class ViewVendas extends javax.swing.JFrame {
 
     private void listarProdutos() {
         listaModelProdutos = controllerProdutos.getListaProdutoController();
-        jcb.removeAll();
-        jcb.addItem("");
+        jcbProduto.removeAll();
+        jcbProduto.addItem("");
         for (int i = 0; i < listaModelProdutos.size(); i++) {
-            jcb.addItem(listaModelProdutos.get(i).getProNome());
+            jcbProduto.addItem(listaModelProdutos.get(i).getProNome());
         }
     }
 
     private void aplicarServico(double pSoma) {
         try {
-            double servico, soma;
+            double servico, s, soma;
             double porcentagemTaxa = Double.parseDouble(jtfServico.getText());
             soma = pSoma;
-            servico = soma * (1 + (porcentagemTaxa / 100));
+            s = soma * (1 + (porcentagemTaxa / 100));
+            servico = (double) (Math.round(s * 100.0) / 100.0);
             jtfValorTotal.setText(String.valueOf(servico));
 
         } catch (Exception e) {
@@ -906,7 +988,7 @@ public class ViewVendas extends javax.swing.JFrame {
     }
 
     private void somarValorTotalVendas() {
-        double valorTotal = 0, servico = 0, valorBruto = 0, valorL, valorS, valorB;
+        double valorTotal = 0, servico = 0, valorBruto = 0, valorL, valorS, valorServico, valorB;
         int cont = jtVendas.getRowCount();
         for (int i = 0; i < cont; i++) {
             valorB = (double) jtVendas.getValueAt(i, 4);
@@ -915,8 +997,9 @@ public class ViewVendas extends javax.swing.JFrame {
             valorTotal += valorL;
         }
         valorS = valorTotal - valorBruto;
+        valorServico = (double) (Math.round(valorS * 100.0) / 100.0);
         jtfValorBrutoTotal.setText(String.valueOf(valorBruto));
-        jtfServicoTotal.setText(String.valueOf(valorS));
+        jtfServicoTotal.setText(String.valueOf(valorServico));
         jtfValorTTotal.setText(String.valueOf(valorTotal));
     }
 
@@ -941,6 +1024,10 @@ public class ViewVendas extends javax.swing.JFrame {
     }
 
     private void limparFormulario() {
+        jtfCodUsu.setText("");
+        jcbUsuario.setSelectedItem(null);
+        jcbProduto.setSelectedItem(null);
+        jcbMesa.setSelectedItem(null);
         jtfQuantidade.setText("");
         jtfNumVenda.setText("");
         jtfServico.setText("10");
@@ -960,6 +1047,7 @@ public class ViewVendas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -989,6 +1077,7 @@ public class ViewVendas extends javax.swing.JFrame {
     private javax.swing.JTable jtProdutosVenda;
     private javax.swing.JTable jtVendas;
     private javax.swing.JTextField jtfCodPro;
+    private javax.swing.JTextField jtfCodUsu;
     private javax.swing.JTextField jtfNumVenda;
     private javax.swing.JTextField jtfPesquisa;
     private javax.swing.JTextField jtfQuantidade;
@@ -1007,7 +1096,7 @@ public class ViewVendas extends javax.swing.JFrame {
         jcbMesa.setEnabled(pCampo);
         jcbUsuario.setEnabled(pCampo);
         jtfCodPro.setEnabled(pCampo);
-        jcb.setEnabled(pCampo);
+        jcbProduto.setEnabled(pCampo);
         jtfQuantidade.setEnabled(pCampo);
         jtfServico.setEnabled(pCampo);
 

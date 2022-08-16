@@ -14,7 +14,6 @@ public class ModelVendas {
     private Date venDataVenda;
     private double venValorLiquido;
     private double venValorBruto;
-    private double venDesconto;
     private double venTaxa;
 
     /**
@@ -106,19 +105,6 @@ public class ModelVendas {
         return this.venValorBruto;
     }
 
-    /**
-    * seta o valor de venDesconto
-    * @param pVenDesconto
-    */
-    public void setVenDesconto(double pVenDesconto){
-        this.venDesconto = pVenDesconto;
-    }
-    /**
-    * @return venDesconto
-    */
-    public double getVenDesconto(){
-        return this.venDesconto;
-    }
 
     /**
     * seta o valor de venTaxa
@@ -136,6 +122,6 @@ public class ModelVendas {
 
     @Override
     public String toString(){
-        return "ModelVendas {" + "::idVenda = " + this.idVenda + "::usuario = " + this.usuario + "::venMesa = " + this.venMesa + "::venDataVenda = " + this.venDataVenda + "::venValorLiquido = " + this.venValorLiquido + "::venValorBruto = " + this.venValorBruto + "::venDesconto = " + this.venDesconto + "::venTaxa = " + this.venTaxa +  "}";
+        return "ModelVendas {" + "::idVenda = " + this.idVenda + "::usuario = " + this.usuario + "::venMesa = " + this.venMesa + "::venDataVenda = " + this.venDataVenda + "::venValorLiquido = " + this.venValorLiquido + "::venValorBruto = " + this.venValorBruto + "::venTaxa = " + this.venTaxa +  "}";
     }
 }

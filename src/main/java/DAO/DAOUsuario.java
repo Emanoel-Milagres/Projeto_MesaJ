@@ -75,6 +75,40 @@ public class DAOUsuario extends ConexaoPostgre {
         }
         return modelUsuario;
     }
+    
+    
+    public ModelUsuario getUsuarioDAO(String pNomeUsuario){
+        ModelUsuario modelUsuario = new ModelUsuario();
+        try {
+            this.conectar();
+            this.executarSQL(
+                "SELECT "
+                    + "pk_id_usuario,"
+                    + "usu_nome,"
+                    + "usu_login,"
+                    + "usu_senha,"
+                    + "usu_setor"
+                 + " FROM"
+                     + " tbl_usuario"
+                 + " WHERE"
+                     + " usu_nome = '" + pNomeUsuario + "'"
+                + ";"
+            );
+
+            while(this.getResultSet().next()){
+                modelUsuario.setIdUsuario(this.getResultSet().getInt(1));
+                modelUsuario.setUsuNome(this.getResultSet().getString(2));
+                modelUsuario.setUsuLogin(this.getResultSet().getString(3));
+                modelUsuario.setUsuSenha(this.getResultSet().getString(4));
+                modelUsuario.setUsuSetor(this.getResultSet().getString(5));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            this.fecharConexao();
+        }
+        return modelUsuario;
+    }
 
     /**
     * recupera uma lista de Usuario

@@ -162,22 +162,16 @@ public class ViewLogin extends javax.swing.JFrame {
 
     private void jtfUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfUsuarioActionPerformed
         // TODO add your handling code here:
+        jpfSenha.requestFocus();
     }//GEN-LAST:event_jtfUsuarioActionPerformed
 
     private void jpfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpfSenhaActionPerformed
         // TODO add your handling code here:
+        entrar();
     }//GEN-LAST:event_jpfSenhaActionPerformed
 
     private void jbEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarActionPerformed
-        // TODO add your handling code here:
-        modelUsuario.setUsuLogin(jtfUsuario.getText());
-        modelUsuario.setUsuSenha(String.valueOf(jpfSenha.getPassword()));
-        if (controllerUsuario.getValidarUsuarioController(modelUsuario)) {
-
-            new ViewPrincipal().setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario ou Senha inválido!", "ERRO", JOptionPane.ERROR_MESSAGE);
-        }
+        entrar();
     }//GEN-LAST:event_jbEntrarActionPerformed
 
     private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
@@ -197,8 +191,20 @@ public class ViewLogin extends javax.swing.JFrame {
     private void jbEntrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jbEntrarKeyReleased
         // TODO add your handling code here:        }
     }//GEN-LAST:event_jbEntrarKeyReleased
+    
+    
+    private void entrar(){
+        // TODO add your handling code here:
+        modelUsuario.setUsuLogin(jtfUsuario.getText());
+        modelUsuario.setUsuSenha(String.valueOf(jpfSenha.getPassword()));
+        if (controllerUsuario.getValidarUsuarioController(modelUsuario)) {
 
-    /**
+            new ViewPrincipal().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario ou Senha inválido!", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
